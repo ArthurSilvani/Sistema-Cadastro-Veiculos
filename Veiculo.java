@@ -168,6 +168,22 @@ void listarVeiculos() {
 
 void ConsultarVeiculo() {
     listarVeiculos();
-    int indice = Input.readInt("Informe a placa do seu Veículo: ");
+    String placa = IO.readln("Informe a placa do seu Veículo: ").trim().toUpperCase();
 
+    boolean encontrado = false;
+
+    for (Veiculo veiculo : veiculos) {
+        if (veiculo.getPlaca().equals(placa)) {
+            IO.println("\n--- Veículo encontrado ---");
+            IO.println(veiculo.getMarca());
+            IO.println(veiculo.getModelo());
+            IO.println(veiculo.getAno());
+            IO.println(veiculo.getPlaca());
+            encontrado = true;
+            break;
+        }
+    }
+    if (!encontrado) {
+        IO.println("Nenhum veículo encontrado com essa placa.");
+    }
 }
